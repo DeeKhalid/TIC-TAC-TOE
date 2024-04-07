@@ -42,12 +42,8 @@ resource "aws_eks_cluster" "example" {
     "subnet-172.31.2.0/24",
     "subnet-172.31.3.0/24",
 ]
-# other VPC configuration option can be specified here
-    
 }
- availability_zone = "us-east-2b"
   
-
   # Ensure that IAM Role permissions are created before and deleted after EKS Cluster handling.
   # Otherwise, EKS will not be able to properly delete EKS managed EC2 infrastructure such as Security Groups.
   depends_on = [
