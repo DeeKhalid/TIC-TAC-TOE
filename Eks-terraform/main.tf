@@ -39,8 +39,8 @@ resource "aws_eks_cluster" "example" {
 
   vpc_config {
     subnet_ids = [
-    subnet-"172.21.1.0/24" # Subnet in AZ1
-    subnet-"172.21.2.0/24" # Subnet in AZ2
+    subnet-"172.21.1.0/24", # Subnet in AZ1
+    subnet-"172.21.2.0/24", # Subnet in AZ2
 ]
   }
 
