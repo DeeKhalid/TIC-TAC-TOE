@@ -46,7 +46,7 @@ resource "aws_eks_cluster" "example" {
     
 }
  availability_zone = "us-east-2b"
-  }
+  
 
   # Ensure that IAM Role permissions are created before and deleted after EKS Cluster handling.
   # Otherwise, EKS will not be able to properly delete EKS managed EC2 infrastructure such as Security Groups.
