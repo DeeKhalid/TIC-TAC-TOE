@@ -29,6 +29,7 @@ data "aws_vpc" "my_vpc" {
 #get public subnet IDs for the cluster VPC
 data "aws_subnet" "public" {
   vpc_id = data.aws_vpc.my_vpc.id
+  availability_zone = "us-east-2a"
 
   }
 
