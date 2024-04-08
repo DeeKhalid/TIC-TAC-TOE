@@ -29,10 +29,6 @@ data "aws_vpc" "my_vpc" {
 data "aws_subnet" "public" {
   vpc_id = data.aws_vpc.my_vpc.id
 
-  filter {
-    name = "map_public_ip_on_launch"
-    values = ["true"]
-   }
   }
 
 #cluster provision
