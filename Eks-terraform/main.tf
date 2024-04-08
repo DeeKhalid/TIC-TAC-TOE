@@ -26,7 +26,7 @@ data "aws_vpc" "my_vpc" {
   id = "my-vpc"
 }
 #get public subnet IDs for the cluster VPC
-data "aws_subnets" "public" {
+data "aws_subnet_ids" "public" {
   vpc_id = data.aws_vpc.my_vpc.id
   }
 
