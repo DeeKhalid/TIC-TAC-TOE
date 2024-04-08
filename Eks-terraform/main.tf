@@ -22,16 +22,14 @@ resource "aws_iam_role_policy_attachment" "example-AmazonEKSClusterPolicy" {
 }
 
 #get vpc data
-data "aws_vpc" "default" {
-  default = true
+data "aws_vpc" "my_vpc" {
+  id = "my-vpc"
 }
 #get public subnets for cluster
 data "aws_subnets" "public" {
-  filter {
-    name   = "vpc-id"
-    values = [data.aws_vpc.default.id]
+  vpc_id = data.aws_vpc.my_vpc.id
   }
-}
+
 #cluster provision
 resource "aws_eks_cluster" "example" {
   name     = "Khalid_CLOUD"
