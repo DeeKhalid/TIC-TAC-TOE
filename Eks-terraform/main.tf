@@ -23,7 +23,11 @@ resource "aws_iam_role_policy_attachment" "example-AmazonEKSClusterPolicy" {
 
 #get VPC data
 data "aws_vpc" "my_vpc" {
-  vpc_id = "vpc-0b56ccb528bdf1f04"
+    id = "vpc-0b56ccb528bdf1f04"
+  filter {
+    name = "availability-zone"
+    values = ["us-west-2a"]
+}
 
 }
 #get public subnet IDs for the cluster VPC
