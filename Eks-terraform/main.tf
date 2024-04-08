@@ -23,7 +23,7 @@ resource "aws_iam_role_policy_attachment" "example-AmazonEKSClusterPolicy" {
 
 #get VPC data
 data "aws_vpc" "my_vpc" {
-  id = "my-vpc"
+  id = "vpc-0b56ccb528bdf1f04"
 }
 #get public subnet IDs for the cluster VPC
 data "aws_subnet" "public" {
