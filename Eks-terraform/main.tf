@@ -26,8 +26,13 @@ data "aws_vpc" "my_vpc" {
   id = "my-vpc"
 }
 #get public subnet IDs for the cluster VPC
-data "aws_subnet_ids" "public" {
+data "aws_subnet" "public" {
   vpc_id = data.aws_vpc.my_vpc.id
+
+  filter {
+    name = "mapPublicIpOnLaunch"
+    values = ["true"]
+   }
   }
 
 #cluster provision
@@ -85,7 +90,7 @@ resource "aws_eks_node_group" "example" {
   cluster_name    = aws_eks_cluster.example.name
   node_group_name = "Node-cloud"
   node_role_arn   = aws_iam_role.example1.arn
-  subnet_ids      = data.aws_subnets.public.ids
+  subnet_ids      = data.aws_subnet.public.ids
 
   scaling_config {
     desired_size = 1
