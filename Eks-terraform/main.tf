@@ -21,11 +21,11 @@ resource "aws_iam_role_policy_attachment" "example-AmazonEKSClusterPolicy" {
   role       = aws_iam_role.example.name
 }
 
-#get vpc data
+#get VPC data
 data "aws_vpc" "my_vpc" {
   id = "my-vpc"
 }
-#get public subnets for cluster
+#get public subnet IDs for the cluster VPC
 data "aws_subnets" "public" {
   vpc_id = data.aws_vpc.my_vpc.id
   }
