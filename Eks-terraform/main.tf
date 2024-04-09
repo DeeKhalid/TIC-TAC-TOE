@@ -33,6 +33,11 @@ data "aws_subnet" "public" {
 
   }
 
+#get private subnet IDs for the cluster VPC 
+data "aws_subnet" "private" {
+vpc_id = data.aws_vpc.my_vpc.id
+availability_zone = "us-east-2b
+
 #cluster provision
 resource "aws_eks_cluster" "example" {
   name     = "Khalid_CLOUD"
@@ -88,7 +93,7 @@ resource "aws_eks_node_group" "example" {
   cluster_name    = aws_eks_cluster.example.name
   node_group_name = "Node-cloud"
   node_role_arn   = aws_iam_role.example1.arn
-  subnet_ids      = [data.aws_subnet.public.id]
+  subnet_ids      = [data.aws_subnet.private.id]
 
   scaling_config {
     desired_size = 1
